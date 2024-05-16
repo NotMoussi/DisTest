@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message to Discord</title>
+</head>
+<body>
+    <button id="sendButton">Send Message to Discord</button>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', function() {
+            const webhookUrl = 'https://discord.com/api/webhooks/1240658004945272933/eXHOb0ddCY7ks9casNUvKYZnlnK9AWs9hK4xj9nXbM9TcnSjrwJ44rkfLoN2dtbBHfSaL'; // Replace with your Discord webhook URL
+
+            const messagePayload = {
+                content: 'Hello, Discord!'
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(messagePayload)
+            })
+            .then(response => response.json())
+            .then(data => console.log('Message sent:', data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
